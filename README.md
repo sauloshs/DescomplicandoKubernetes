@@ -6,4 +6,4 @@
 
 ### ***Material de apoio***
 
-[Gti de Jerfesson](https://github.com/badtuxx/DescomplicandoKubernetes) 
+[Github de Jerfesson LinuxTips](https://github.com/badtuxx/DescomplicandoKubernetes) 
