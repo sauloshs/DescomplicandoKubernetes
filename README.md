@@ -4,3 +4,6 @@
 
 ## ***Introdução ao Kubernetes***
 
+### ***Material de apoio***
+
+[Gti de Jerfesson](https://github.com/badtuxx/DescomplicandoKubernetes) 
