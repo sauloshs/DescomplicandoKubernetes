@@ -136,6 +136,12 @@ kubectl expose pod nginx
 
 ​	No exemplo a cima ele criou um service do tipo ClusterIP que só tem acesso de dentro do cluster.
 
+​	Adicionando com o tipo de serviço:
+
+```shell
+kubectl expose pod <nome_para_service> --type=NodePort
+```
+
 ### ***Listando os services***
 
 ```shell
