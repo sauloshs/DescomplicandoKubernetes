@@ -117,7 +117,7 @@ kubectl delete -f meu_primeiro_pod.yaml
 ​	Com o comando a baixo usando o parâmetro "--dry=client" ele não cria o pod.
 
 ```shell
-kubectl run nginx --image=nginx --dry=client
+kubectl run nginx --image=nginx --dry-run=client
 ```
 
 ​	Após o procedimento acima redirecionamos a saida do comando "-o ymal" para um arquivo.
@@ -126,6 +126,30 @@ kubectl run nginx --image=nginx --dry=client
 kubectl run nginx --image=nginx --dry=client -o yaml > meu_segundo_pod.yaml
 ```
 
+​	Exemplo de um arquivo:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx2
+  name: nginx2
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    resources: {}
+    ports:
+    - containerPort: 80
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+```
+
+​	No exemplo acima foi adicionado a porta para o container.
+
 ## ***Expondo o pod fora do cluster (Service)***
 
 ​	Verificar se a porta foi exposta no momento da criação do pod.
@@ -133,6 +157,8 @@ kubectl run nginx --image=nginx --dry=client -o yaml > meu_segundo_pod.yaml
 ```shell
 kubectl expose pod nginx
 ```
+
+​	Obs: Se o pod não estiver com a porta especifica vai retornar erro.	
 
 ​	No exemplo a cima ele criou um service do tipo ClusterIP que só tem acesso de dentro do cluster.
 
