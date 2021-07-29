@@ -194,3 +194,9 @@ kubectl edit service nginx
 
 ​	Podemos mudar o seu tipo com esse comando, para NodePort exemplo.
 
+### ***Conectando a um POD***
+
+```shell
+kubectl exec -ti <nome_do_pod> sh
+```
+
