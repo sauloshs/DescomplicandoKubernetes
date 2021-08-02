@@ -100,7 +100,13 @@ kubectl get pods,services,endpoints
 kubectl run nginx --image=nginx 
 ```
 
-### ***Criando patravésavês de um arquivo***
+​	Para criar um deployment devemos usar o comando:
+
+```shell
+kubectl create deployment <Nome_do_Deployment> --image <nome_da_imagem> --port=<porta>
+```
+
+### ***Criando pod através de um arquivo***
 
 ```shell
 kubectl create -f meu_primeiro_pod.yaml
@@ -149,6 +155,55 @@ status: {}
 ```
 
 ​	No exemplo acima foi adicionado a porta para o container.
+
+### ***Criando um arquivo template deployment***
+
+```shell
+kubectl create deployment <nome_deployment> --image nginx --port=8080 --dry-run=client
+```
+
+​	Após o procedimento acima redirecionamos a saida do comando "-o ymal" para um arquivo.
+
+```shell
+kubectl create deployment <nome_deployment> --image nginx --port=8080 --dry-run=client -o yaml > meu_primeiro_deployment.yaml
+```
+
+​	Exemplo de arquivo:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: referencia
+  name: referencia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: referencia
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: referencia
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {} 
+```
+
+## ***Escalando um deployment***
+
+```shell
+ kubectl scale --replicas=10 deployment <nome_deployment>
+```
 
 ## ***Expondo o pod fora do cluster (Service)***
 
