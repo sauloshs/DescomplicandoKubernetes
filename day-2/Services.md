@@ -8,7 +8,7 @@
  kubectl get service <nome_do_service> -o yaml > meu_primeiro_service.yaml
 ```
 
-​	Exemplo de arquivo de service:
+​	Exemplo de arquivo de service do tipo NodePort:
 
 ```yaml
 apiVersion: v1
@@ -32,6 +32,28 @@ spec:
     app: referencia
   sessionAffinity: None
   type: NodePort
+```
+
+​	Exemplo de arquivo de service do tipo LoadBalancer:
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: nginx
+  name: nginx-loadbalancer
+  namespace: default
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 32548
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: nginx
+  sessionAffinity: None
+  type: LoadBalancer
 ```
 
 ## ***Linstando endpoints do deployment***

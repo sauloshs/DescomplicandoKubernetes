@@ -223,6 +223,10 @@ kubectl expose pod nginx
 kubectl expose pod <nome_para_service> --type=NodePort
 ```
 
+```shell
+kubectl expose pod <nome_para_service> --type=LoadBalancer
+```
+
 ### ***Listando os services***
 
 ```shell
